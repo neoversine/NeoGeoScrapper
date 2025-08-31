@@ -41,7 +41,7 @@ const App = () => {
                 Map Your Market, <br />
                 Master Your Competition
               </h1>
-              <img src="underline.png" alt="" className='absolute -bottom-[10px] right-0 md:right-6 w-[400px] md:w-[420px] h-6' />
+              <img src="underline.png" alt="" className='max-md:hidden absolute -bottom-[10px] right-0 md:right-6 w-[400px] md:w-[420px] h-6' />
             </motion.div>
             {/* Paragraph Animation */}
             <motion.p
@@ -129,7 +129,7 @@ const App = () => {
       </div>
 
       <div className='flex flex-col w-full pt-36 ' id="working-api">
-        ;
+
 
         <div className="w-full max-w-7xl mx-auto">
           <motion.div
@@ -144,7 +144,7 @@ const App = () => {
             <motion.img
               src="underline.png"
               alt=""
-              className="absolute bottom-0 max-md:left-16 md:bottom-0 md:right-0 w-[270px]"
+              className="max-md:hidden absolute bottom-0 max-md:left-16 md:bottom-0 md:right-0 w-[270px]"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
