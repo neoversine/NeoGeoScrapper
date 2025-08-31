@@ -6,7 +6,7 @@ const SearchSection = () => {
     const [places, setPlaces] = useState([]); // Store API results
 
     return (
-        <section className="w-full min-h-screen bg-gray-50 py-12 px-4">
+        <section className="w-full min-h-screen bg-gray-50 py-12 px-4" >
             <div className="max-w-6xl mx-auto space-y-10">
                 {/* Search Bar Section */}
                 <PlaceSearch onResults={setPlaces} />

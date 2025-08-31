@@ -24,13 +24,21 @@ export default function PlaceSearch({ onResults }) {
             const res = await fetch(url.toString());
             const data = await res.json();
 
-            if (onResults) onResults(data.results);
+            const results = data.results || [];
+
+            if (results.length === 0) {
+                alert("No results found 🚫");
+            }
+
+            if (onResults) onResults(results);
         } catch (error) {
             console.error("Error fetching places:", error);
+            alert("Something went wrong while fetching places ❌");
         } finally {
             setLoading(false);
         }
     };
+
 
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
@@ -51,16 +59,26 @@ export default function PlaceSearch({ onResults }) {
 
                 {/* Category Dropdown */}
                 <select
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}
                     className="z-10 w-[20%] outline-none text-gray-800 placeholder-gray-400 h-fit border border-gray-400/10 rounded-xl shadow px-3 py-3 focus:border-orange-400 transition-colors bg-white"
+                    value={type}
+                    onChange={(e) => {
+                        const selected = e.target.value;
+                        setType(selected);
+
+                        if (selected !== "restaurants") {
+                            alert("Only Restaurants is working in beta version 🚧");
+                            // optional → reset back to restaurants
+                            setType("restaurants");
+                        }
+                    }}
                 >
-                    <option value="restaurant">Restaurants</option>
-                    <option value="cafe">Cafes</option>
-                    <option value="salon">Salons</option>
-                    <option value="gym">Gyms</option>
-                    <option value="shop">Shops</option>
+                    <option value="restaurants">Restaurants</option>
+                    <option value="cafes">Cafes</option>
+                    <option value="salons">Salons</option>
+                    <option value="gyms">Gyms</option>
+                    <option value="shops">Shops</option>
                 </select>
+
 
                 {/* CTA Button */}
                 <div className="z-10 p-1 rounded-xl bg-white shadow border border-gray-400/10">
